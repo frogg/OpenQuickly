@@ -18,5 +18,6 @@ let package = Package(
 		.target(
 			name: "OpenQuickly"
 		)
-	]
+	],
+	path: "OpenQuickly"
 )

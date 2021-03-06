@@ -326,7 +326,7 @@ extension OpenQuicklyViewController: NSOutlineViewDataSource {
 
 }
 
-public extension OpenQuicklyViewController: NSOutlineViewDelegate {
+extension OpenQuicklyViewController: NSOutlineViewDelegate {
 
   /// The view for each item in the matches array
   public func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {

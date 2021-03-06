@@ -56,7 +56,7 @@ public class OpenQuicklyViewController: NSViewController, NSTextFieldDelegate {
     super.init(coder: coder)
   }
 
-  override func loadView() {
+  public override func loadView() {
     let frame = NSRect(
       x: 0,
       y: 0,
@@ -70,7 +70,7 @@ public class OpenQuicklyViewController: NSViewController, NSTextFieldDelegate {
     view.layer?.cornerRadius = options.radius + 1
   }
 
-  override func viewDidLoad() {
+  public override func viewDidLoad() {
     super.viewDidLoad()
 
     setupSearchField()
@@ -91,7 +91,7 @@ public class OpenQuicklyViewController: NSViewController, NSTextFieldDelegate {
     NSEvent.addLocalMonitorForEvents(matching: .keyDown, handler: keyDown)
   }
 
-  override func viewWillAppear() {
+  public override func viewWillAppear() {
     searchField.stringValue = ""
 
     if !options.persistMatches {
@@ -101,7 +101,7 @@ public class OpenQuicklyViewController: NSViewController, NSTextFieldDelegate {
     view.window?.makeFirstResponder(searchField)
   }
 
-  override var acceptsFirstResponder: Bool {
+  public override var acceptsFirstResponder: Bool {
     return true
   }
 
@@ -141,7 +141,7 @@ public class OpenQuicklyViewController: NSViewController, NSTextFieldDelegate {
     return event
   }
 
-  override func keyUp(with event: NSEvent) {
+  public override func keyUp(with event: NSEvent) {
     if IGNORED_KEYCODES.contains(event.keyCode) {
       return
     }
@@ -290,46 +290,46 @@ public class OpenQuicklyViewController: NSViewController, NSTextFieldDelegate {
 extension OpenQuicklyViewController: NSOutlineViewDataSource {
 
   /// Number of items in the matches list
-  func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
+  public func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
     return matches.count
   }
 
   /// Items to be added to the matches list
-  func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
+  public func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
     return matches[index]
   }
 
   /// Whether items in the matches list are expandable by an arrow
-  func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
+  public func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
     return false
   }
 
   /// Height of each item in the matches list
-  func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
+  public func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
     return options.rowHeight
   }
 
   /// When an item in the matches list is clicked on should it be selected
-  func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
+  public func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
     return true
   }
 
   /// The NSTableRowView instance to be used
-  func outlineView(_ outlineView: NSOutlineView, rowViewForItem item: Any) -> NSTableRowView? {
+  public func outlineView(_ outlineView: NSOutlineView, rowViewForItem item: Any) -> NSTableRowView? {
     return OpenQuicklyTableRowView(frame: NSZeroRect)
   }
 
   /// When an item is selected
-  func outlineViewSelectionDidChange(_ notification: Notification) {
+  public func outlineViewSelectionDidChange(_ notification: Notification) {
     selected = matchesList.selectedRow
   }
 
 }
 
-extension OpenQuicklyViewController: NSOutlineViewDelegate {
+public extension OpenQuicklyViewController: NSOutlineViewDelegate {
 
   /// The view for each item in the matches array
-  func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
+  public func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
     return options.delegate?.openQuickly(item: item)
   }
 

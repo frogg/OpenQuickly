@@ -15,7 +15,7 @@ enum KeyCode {
   static let downArrow: UInt16 = 125
 }
 
-class OpenQuicklyViewController: NSViewController, NSTextFieldDelegate {
+public class OpenQuicklyViewController: NSViewController, NSTextFieldDelegate {
 
   /// KeyCodes that shouldn't update the searchField
   let IGNORED_KEYCODES = [

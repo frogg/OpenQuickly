@@ -36,7 +36,7 @@ public class OpenQuicklyViewController: NSViewController, NSTextFieldDelegate {
   private var clipView: NSClipView!
   private var stackView: NSStackView!
   private var scrollView: NSScrollView!
-  private var searchField: NSTextField!
+  public var searchField: NSTextField!
   private var matchesList: NSOutlineView!
   private var transparentView: NSVisualEffectView!
 
